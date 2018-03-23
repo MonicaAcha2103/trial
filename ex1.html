@@ -1,0 +1,123 @@
+<html>
+<head>
+  <title>2adpro Ex1</title>
+</head>
+<body>
+  <div id="page"><div id="header"><h1 id="title">Page title</h1></div><div id="content"><h2>Content title</h2><p>Content 1</p><p>Content 2</p></div></div>
+    
+	  <div id="button_space">
+	  <button onclick="firstchild()">FirstChild of page</button>
+	<button onclick="lastchild()">LastChild of page</button>
+	<button onclick="nextsibling()">nextSibling of header</button>
+    <button onclick="previoussibling()">previousSibling of content</button>
+     <button onclick="parentnode()">parentNodeof title</button>
+     <button onclick="childnodes()">childNodes of page</button>
+	 <button onclick="retrieveValue()">retrieve node value of H1</button>
+	 	     <button onclick="changeValue()">change value</button>
+			   <button onclick="getAttr()">Get attr</button>
+			   <button onclick="setAttr()">Set attr</button>
+			   <button onclick="appendchild()">AppendChild</button>
+			   <button onclick="insertbefore()">InsertBefore</button>
+			   <button onclick="removechild()">RemoveChild</button>
+			   <button onclick="replacechild()">ReplaceChild</button>
+     </div>
+	<div id="new"></div>
+  <script>
+  function firstchild(){
+    var x = document.getElementById("page").firstChild.innerHTML;
+    document.getElementById("new").innerHTML = x;
+}
+function lastchild(){
+    var x = document.getElementById("page").lastChild.innerHTML;
+    document.getElementById("new").innerHTML = x;
+}
+function nextsibling(){
+  var x = document.getElementById("header").nextSibling.innerHTML;
+    document.getElementById("new").innerHTML = x;
+}
+function previoussibling(){
+var x=document.getElementById("content").previousSibling.innerHTML;
+    document.getElementById("new").innerHTML = x;
+}
+function parentnode(){
+var x=document.getElementById("title").parentNode.innerHTML;
+    document.getElementById("new").innerHTML = x;
+}
+function childnodes(){
+var x= document.getElementById("page").childNodes;
+var text="";
+for(var i=0;i<x.length;i++)
+{text = text+x[i].innerHTML;
+}
+    document.getElementById("new").innerHTML = text;
+}
+function retrieveValue(){
+   var c = document.getElementsByTagName("H1")[0].firstChild.nodeValue;
+    document.getElementById("new").innerHTML = c; 
+
+ }
+ function changeValue(){
+   document.getElementsByTagName("H1")[0].firstChild.nodeValue= "Title of the page";
+ }
+ function getAttr(){
+   var c = document.getElementsByTagName("H1")[0].getAttribute("id");
+    document.getElementById("new").innerHTML = c; 
+ }
+ function setAttr(){
+   document.getElementsByTagName("H1")[0].setAttribute("id","title_new");
+    var c = document.getElementsByTagName("H1")[0].getAttribute("id");
+    document.getElementById("new").innerHTML = c;
+ }
+ function appendchild(){
+ 
+    var c = document.createElement("H5");
+	var text=document.createTextNode("content3");
+	c.appendChild(text);
+    document.getElementById("content").appendChild(c);
+ }
+ function insertbefore(){
+ 
+    var c = document.createElement("H1");
+	var text=document.createTextNode("appending title");
+	c.appendChild(text);
+	var ins=document.getElementById("page");
+    ins.insertBefore(c,ins.firstChild);
+ }
+ 
+ function removechild(){
+ 
+    var c = document.getElementById("page");
+	c.removeChild(c.firstChild);
+ }
+ function replacechild(){
+ var c = document.createElement("H1");
+	var text=document.createTextNode("appending at last ");
+	c.appendChild(text);
+    var page = document.getElementById("page");
+	page.replaceChild(c,page.lastChild);
+ }
+  </script>
+  
+</body>
+</html>
+
+
+<!-- new
+Use the firstChild property to access an element.
+Use the lastChild property to access an element.
+Use the nextSibling property to access an element.
+Use the previousSibling property to access an element.
+Use the parentNode property to access an element.
+Use the childNodes property to access a group of child elements. -->
+
+<!-- TWO
+Retrieve the value of a node using nodeValue.
+Change the value of a node using nodeValue.
+Retrieve the value of a node attribute.
+Change the value of a node attribute. -->
+
+<!-- Three
+Use the appendChild method to add a node.
+Use the insertBefore method to add a node.
+Use the removeChild method to remove a node.
+Use the replaceChild method to replace a node. -->
