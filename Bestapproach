@@ -1,0 +1,131 @@
+
+Best approach / Solution
+
+To use the firstChild property to access an element, you simply need to reference an element in the HTML markup; then, you can use firstChild to target the first element it contains. shown below an example of how you can target the h1 element in the "header" <div>. One thing to note is that most browsers treat new lines and spaces as text nodes; so, although this example was straightforward, with the <h1> tag being on the same line as the header, you may find yourself in situations where the firstChild is a text node.
+
+Use the firstChild property to access an element
+Targeting an element with an ID of header and using the firstChild property to access the first element contained within it
+
+<script type="text/javascript">
+  alert(document.getElementById('header').firstChild.nodeName);
+</script>
+
+You can use the lastChild property to access an element the same way you used firstChild: The only difference is the result. First, reference an element in the HTML markup, and then use lastChild to target the last element it contains. shown below an example of how you are again targeting the h1 element in the "header" <div>, as it is the one and only element in the header.
+
+Use the lastChild property to access an element.
+
+ Targeting an element with an ID of header and using the lastChild property to access the last element contained within it
+
+<script type="text/javascript">
+  alert(document.getElementById('header').lastChild.nodeName);
+</script>
+After you have targeted an element using JavaScript, you can use the nextSibling property to target the next element in the DOM that is at the same level as the current element. Shown below an example that uses the nextSibling property to access the h2 element within the "content" <div> after first using the firstChild element to target the text node or new line.
+
+
+Use the nextSibling property to access an element.
+
+Targeting an element with an ID of content and using the nextSibling property to access an element contained within it
+
+<script type="text/javascript">
+  alert(document.getElementById('content').firstChild.nextSibling.nodeName);
+</script>
+
+
+Use the previousSibling property to access an element.
+
+The previousSibling property works the same way as the nextSibling property, the only difference being that it references the previous element rather than the next element. Shown below  an example of using previousSibling to access the p element in the "content" <div> after referencing the last child element.
+
+Targeting an element with an ID of content and using the previousSibling property to access an element contained within it
+
+<script type="text/javascript">
+  alert(document.getElementById('content').lastChild.previousSibling.nodeName);
+</script>
+To target the parent of a child element, you can use the parentNode property. Shown below  an  example that targets the firstChild within the "content" <div>, and then targets the "content" <div> using the parentNode property.
+
+Use the parentNode property to access an element.
+
+Targeting an element with an ID of content and using the parentNode property to access an element contained within it
+
+<script type="text/javascript">
+  alert(document.getElementById('content').firstChild.parentNode.nodeName);
+</script>
+To target an entire group of child nodes, you can use the childNodes property. This property also returns the text nodes, but if you were to iterate the array of nodes, you could check the nodeType to skip over text nodes. Shown below  an example that uses the childNodes property, and then uses the length property to determine how many children there are.
+
+Use the childNodes property to access a group of child elements.
+
+Targeting an element with an ID of content and using the childNodes property to access all of the child nodes within it
+
+<script type="text/javascript">
+  alert(document.getElementById('content').childNodes.length);
+</script>
+
+
+ Targeting nodes (two)
+
+To target the h1 element within the "header" <div>, you used the firstChild element. However if you want to target the text within the h1 element, you need to add another firstChild; then, you can use the nodeValue to retrieve the value of the text node within the h1 element.
+
+
+ Create a new object using the literal notation and add a property and method
+
+<script type="text/javascript">
+  alert(document.getElementById('header').firstChild.firstChild.nodeValue);
+</script>
+After you have targeted the value of a node, you can simply use the equal sign (=) to change it see below
+
+ Using the nodeValue property to change the value of a text node
+
+<script type="text/javascript">
+  document.getElementById('header').firstChild.firstChild.nodeValue = "New Page Title";
+</script>
+To target a node attribute, you must first target the node. the below  provides an example that targets the "header" <div>, then uses the firstChild property to target the h1 element and finally targets the id attribute to retrieve its value.
+
+ Targeting the id attribute of a node
+
+<script type="text/javascript">
+  alert(document.getElementById('header').firstChild.id);
+</script>
+Now that you have targeted a node attribute, you can easily update its value by using the equal sign and setting it to a new string value. Shown below  provides an example that updates the value of the id attribute. This function comes in handy with CSS classes, because you can change the class name to alter the look and feel of an element in real time.
+
+By targeting the id attribute of an element, you can set it to a new value.
+
+<script type="text/javascript">
+  document.getElementById('header').firstChild.id = "new-title-id";
+</script>
+
+ Manipulating the DOM
+To add a node to the DOM using appendChild, you must first use the document.createElement method. Then, you can target an element and use the appendChild method to add the new element you created. show below how the document.createElement property is used to create a new p element, and then the innerHTML property is used to set a text string value to that element before it is added to the DOM.
+
+ Creating a new p element and adding it to the DOM using appendChild
+
+
+<script type="text/javascript">
+  var p = document.createElement('p');
+  p.innerHTML = "New paragraph element";
+  document.getElementById('content').appendChild(p);
+</script>
+You can also use the insertBefore method to add a new node to the DOM. The purpose of insertBefore is to provide the function that lets you add a node before an existing node. For example, shown how to use insertBefore to add a new p element before the firstChild in the "content" <div>.
+
+ Creating a new p element and adding it to the DOM using insertBefore
+
+<script type="text/javascript">
+  var p = document.createElement('p');
+  p.innerHTML = "New paragraph element";
+  var content = document.getElementById('content');
+  content.insertBefore(p, content.firstChild);
+</script>
+To remove an element from the DOM, you must first target an existing element. After you have targeted an existing element, you can use the removeChild method to remove an existing element. provided an example that removes the "title" h1 from the "header" <div>.
+
+Removing an element from the DOM using removeChild
+
+<script type="text/javascript">
+  document.getElementById('header').removeChild(document.getElementById('title'));
+</script>
+To replace an element, you simply need to target an existing element and use the replaceChild method to replace one of its child elements. Shown below an example that targets the "header" <div> and replaces the "title" h1 with the new p element.
+
+eplacing an element in the DOM using replaceChild
+
+<script type="text/javascript">
+  var p = document.createElement('p');
+  p.innerHTML = "New paragraph element";
+  document.getElementById('header').replaceChild(p, document.getElementById('title'));
+</script>
