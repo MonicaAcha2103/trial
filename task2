@@ -1,0 +1,11 @@
+var A = 10;
+var B = true;
+
+if (A*A > 1000 || B) alert("true!");
+
+As you’d eapect, “true” is output because B is true — even though the first condition fails.
+
+If we changed a to 100, a*a would be greater than 1000 and evaluate to true. But, because we’re using a logical OR (||), the interpreter never needs to analyze B — the expression must be true so the alert is displayed.
+
+now optimize expressions above to ensure those which require the least processing are analyzed first
+
