@@ -38,7 +38,13 @@ Test variable is initialised with the function getFullName().
 A reference of obj.prop.getFullname is stored in test. so test basically has a function 
 calling test() returns this.fullname. here this refers to the global object. So this.fullname="Ravi"
 
+=====
+
+
 To print Suresh Rajini, 
 console.log(obj.prop.getFullname());
+===>console.log(test.call(obj.prop));
+this is what you should be using 
+I suggest you read the difference between function.call and function.apply.
 
 
