@@ -1,0 +1,44 @@
+var A = 10;
+var B = true;
+if (A*A > 1000 || B) alert("true!");
+
+As you’d eapect, “true” is output because B is true — even though the first condition fails.
+
+If we changed a to 100, a*a would be greater than 1000 and evaluate to true. But, because we’re using a logical OR (||), the interpreter never needs to analyze B — the expression must be true so the alert is displayed.
+
+now optimize expressions above to ensure those which require the least processing are analyzed first.
+ANSWER-
+if (B || A*A > 1000 ) alert("true!");
+___________________________________________________
+
+1. What is the result of the following code? Explain your answer.
+2.Make sure the last console.log() prints Suresh Rajini.
+
+var fullname = 'Ravi';
+var obj = {
+   fullname: 'Senthil Kamal',
+   prop: {
+      fullname: 'Suresh Rajini',
+      getFullname: function() {
+         return this.fullname;
+      }
+   }
+};
+console.log(obj.prop.getFullname());
+var test = obj.prop.getFullname;
+console.log(test());
+
+ANSWER-
+The result is
+Suresh Rajini
+Ravi
+Initially obj.prop.getFullname() is returning this.fullname. here it returns fullname="Suresh Ranjini".
+Since every function is an object, this refers to the function object. this.fullname="Suresh Ranjini".
+Test variable is initialised with the function getFullName().
+A reference of obj.prop.getFullname is stored in test. so test basically has a function 
+calling test() returns this.fullname. here this refers to the global object. So this.fullname="Ravi"
+
+To print Suresh Rajini, 
+console.log(obj.prop.getFullname());
+
+
